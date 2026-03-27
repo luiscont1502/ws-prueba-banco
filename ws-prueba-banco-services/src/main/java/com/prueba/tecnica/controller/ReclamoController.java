@@ -20,13 +20,18 @@ public class ReclamoController {
 
     private final ReclamoCore reclamoCore;
 
-
+    /**
+     * Metodo para consultar el cliente
+     * **/
     @GetMapping("/cliente/{identificacion}")
     public ResponseEntity<ResponseData<ClienteResponseDto>> consultarCliente(@PathVariable String identificacion) {
         var data = clienteCore.consultarCliente(identificacion);
         return ResponseEntity.ok(ResponseData.ok(data));
     }
 
+    /**
+     * Metodo para guardar los reclamos del cliente
+     * **/
     @PostMapping
     public ResponseEntity<ResponseData<ReclamoResponseDto>> guardarReclamo(@RequestBody GuardarReclamoRequest request) {
         var data = reclamoCore.guardarReclamo(request);

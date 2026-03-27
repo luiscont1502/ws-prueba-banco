@@ -17,6 +17,9 @@ public class ReclamoCore {
 
     private final ReclamoService reclamoService;
 
+    /**
+     * Guardamos el reclamo del cliente y retornamos un dto
+     * **/
     public ReclamoResponseDto guardarReclamo(GuardarReclamoRequest reclamoRequest) {
 
         ClientesEntity cliente = clienteService.findByIdentificacion(reclamoRequest.getIdentificacion());

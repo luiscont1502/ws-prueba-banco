@@ -21,6 +21,10 @@ import java.util.Properties;
 @EntityScan(basePackages = "com.prueba.persistence.postgres.entity")
 public class PostgresConfig {
 
+    /**
+     * Configura el DataSource, es decir, la conexión
+     * hacia la base de datos PostgreSQL.
+     */
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -32,6 +36,14 @@ public class PostgresConfig {
         return dataSource;
     }
 
+     /**
+     * Configura el EntityManagerFactory.
+     *
+     * Es el componente encargado de:
+     * - gestionar las entidades JPA
+     * - interactuar con Hibernate
+     * - mapear objetos Java a tablas de base de datos
+     */
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
@@ -49,6 +61,15 @@ public class PostgresConfig {
         return emf;
     }
 
+    /**
+     * Configura el TransactionManager.
+     *
+     * Se encarga de gestionar las transacciones de la aplicación,
+     * asegurando consistencia en operaciones como:
+     * - inserciones
+     * - actualizaciones
+     * - eliminaciones
+     */
     @Bean
     public PlatformTransactionManager transactionManager() {
         JpaTransactionManager transactionManager = new JpaTransactionManager();

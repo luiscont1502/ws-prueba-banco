@@ -11,6 +11,11 @@ import org.springframework.stereotype.Component;
 public class ClienteCore {
 
     private final ClienteService clienteService;
+
+    /**
+     * Seteamos las entidades y la devolvemos en un dto 
+     * su fin es enviar solo los datos necesarios al front
+     * **/
     public ClienteResponseDto consultarCliente(String identificacion){
         ClientesEntity cliente = clienteService.findByIdentificacion(identificacion);
 
